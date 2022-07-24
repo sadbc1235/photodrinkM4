@@ -147,9 +147,10 @@ for(let i=0; i<boothBoxs.length; i++) {
       })
       conceptItems[j].classList.add("active");
 
+      conceptImg.style.opacity = 0;
+      filterListBox.style.opacity = 0;
+
       if(conceptItems[j].innerText.includes("NEON")) {
-        conceptImg.style.opacity = 0;
-        filterListBox.style.opacity = 0;
 
         setTimeout(() => {
 
@@ -165,17 +166,16 @@ for(let i=0; i<boothBoxs.length; i++) {
             break;
           }
 
-          for(let i=0; i<neonFilter.length; i++) {
+            for(let i=0; i<neonFilter.length; i++) {
             
-            filters[i].style.background = neonFilter[i];
-            circles[i].style.background = neonFilter[i];
-            filterNames[i].innerText = conceptName.neon[i];
-          }
+              filters[i].style.background = neonFilter[i];
+              circles[i].style.background = neonFilter[i];
+              filterNames[i].innerText = conceptName.neon[i];
+            }
+
         }, 200)
         
       } else if(conceptItems[j].innerText.includes("Profile")) {
-        conceptImg.style.opacity = 0;
-        filterListBox.style.opacity = 0;
 
         setTimeout(() => {
 
@@ -200,8 +200,6 @@ for(let i=0; i<boothBoxs.length; i++) {
         }, 200)
         
       } else if(conceptItems[j].innerText.includes("Modern")) {
-        conceptImg.style.opacity = 0;
-        filterListBox.style.opacity = 0;
 
         setTimeout(() => {
 
@@ -226,8 +224,6 @@ for(let i=0; i<boothBoxs.length; i++) {
         }, 200)
         
       } else if(conceptItems[j].innerText.includes("Art")) {
-        conceptImg.style.opacity = 0;
-        filterListBox.style.opacity = 0;
 
         setTimeout(() => {
           conceptImg.setAttribute("src", fullConceptImgSrc.art);
@@ -240,8 +236,6 @@ for(let i=0; i<boothBoxs.length; i++) {
         }, 200)
         
       } else if(conceptItems[j].innerText.includes("Dynamic")) {
-        conceptImg.style.opacity = 0;
-        filterListBox.style.opacity = 0;
 
         setTimeout(() => {
           conceptImg.setAttribute("src", dynamicConceptImgSrc);
@@ -253,11 +247,13 @@ for(let i=0; i<boothBoxs.length; i++) {
         }, 200)
       }
 
-      setTimeout(() => {
-        filterListBox.style.opacity = 1;
-        conceptImg.style.opacity = 1;
-      }, 300)
-      boothImg.classList.add("active");
+      conceptImg.addEventListener("load", () => {
+        setTimeout(() => {
+          filterListBox.style.opacity = 1;
+          conceptImg.style.opacity = 1;
+        }, 300)
+        boothImg.classList.add("active");
+      })
       
     })
 
