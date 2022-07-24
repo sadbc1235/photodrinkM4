@@ -59,6 +59,7 @@ const modernFilter = [
 ]
 
 let disable = true;
+let backBtnDisable = true;
 
 const loading = document.querySelector(".loading");
 
@@ -153,7 +154,9 @@ for(let i=0; i<boothBoxs.length; i++) {
 
       conceptImg.style.opacity = 0;
       filterListBox.style.opacity = 0;
+      backBtn.style.opacity = 0;
       loading.classList.add("active");
+      backBtnDisable = false;
 
       if(conceptItems[j].innerText.includes("NEON")) {
 
@@ -253,8 +256,10 @@ for(let i=0; i<boothBoxs.length; i++) {
       }
 
       conceptImg.addEventListener("load", () => {
-          filterListBox.style.opacity = 1;
-          conceptImg.style.opacity = 1;
+        filterListBox.style.opacity = 1;
+        conceptImg.style.opacity = 1;
+        backBtn.style.opacity = 1;
+        backBtnDisable = true;
         boothImg.classList.add("active");
         loading.classList.remove("active");
       })
@@ -293,68 +298,72 @@ for(let i=0; i<boothBoxs.length; i++) {
   }
 
     // back button click event
-    backBtn.addEventListener("click", () => {
-      boothExplain.style.opacity = 0;
-      conceptImg.style.opacity = 0;
-      mainImg.style.opacity = 1;
-
-      for (let j=0; j<filters.length; j++) {
-        filters[j].classList.remove("active");
-        filters[j].classList.remove("active2");
-        filterNames[j].classList.remove("active");
-      }
-
-      conceptItems.forEach( conceptItem => {
-        conceptItem.classList.remove("active");
-      })
-      conceptImg.style.opacity = 0;
-      filterListBox.style.opacity = 0;
-      
-
-      let delay = 0;
-      for(let i=0; i<conceptItems.length; i++) {
-        conceptItems[i].style.transitionDelay = delay+"s";
-        delay += 0.2;
-      }
+    if(backBtnDisable) {
+      backBtn.addEventListener("click", () => {
+        boothExplain.style.opacity = 0;
+        conceptImg.style.opacity = 0;
   
-      
-      conceptListBox.style.opacity = 0;
-      backBtn.style.opacity = 0;
-      
-      setTimeout(() => {
-        boothImg.classList.remove("active");
+        for (let j=0; j<filters.length; j++) {
+          filters[j].classList.remove("active");
+          filters[j].classList.remove("active2");
+          filterNames[j].classList.remove("active");
+        }
+  
+        conceptItems.forEach( conceptItem => {
+          conceptItem.classList.remove("active");
+        })
+        conceptImg.style.opacity = 0;
+        filterListBox.style.opacity = 0;
         
+  
+        let delay = 0;
         for(let i=0; i<conceptItems.length; i++) {
-          conceptItems[i].style.transform = "translateY(0%)";
+          conceptItems[i].style.transitionDelay = delay+"s";
+          delay += 0.2;
         }
-        backBtn.style.display = "none";
-  
-      }, 300)
-  
-      setTimeout(() => {
-        boothBoxs[i].style.display = "flex";
-        conceptListBox.style.display = "none";
-        boothBoxs[i].classList.remove("active");
-        boothInner.classList.remove("active");
-  
-        for(let j=0; j<boothBoxs.length; j++) {
-          if (i !== j) {
-            boothBoxs[j].style.display = "flex";
-          }
-        }
-  
-        setTimeout(() => {
+    
         
+        conceptListBox.style.opacity = 0;
+        backBtn.style.opacity = 0;
+        
+        setTimeout(() => {
+          mainImg.style.opacity = 1;
+          boothImg.classList.remove("active");
+          
+          for(let i=0; i<conceptItems.length; i++) {
+            conceptItems[i].style.transform = "translateY(0%)";
+          }
+          backBtn.style.display = "none";
+    
+        }, 300)
+    
+        setTimeout(() => {
+          boothBoxs[i].style.display = "flex";
+          conceptListBox.style.display = "none";
+          boothBoxs[i].classList.remove("active");
+          boothInner.classList.remove("active");
+    
           for(let j=0; j<boothBoxs.length; j++) {
             if (i !== j) {
-              boothBoxs[j].classList.remove("fadeout");
+              boothBoxs[j].style.display = "flex";
             }
           }
-          disable = true;
-  
-        }, 380)
-      }, 320)
-  
-    })
+    
+          setTimeout(() => {
+          
+            for(let j=0; j<boothBoxs.length; j++) {
+              if (i !== j) {
+                boothBoxs[j].classList.remove("fadeout");
+              }
+            }
+            disable = true;
+    
+          }, 380)
+        }, 320)
+    
+      })
+    }
+
+    
 
 }
