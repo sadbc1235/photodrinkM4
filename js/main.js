@@ -61,32 +61,6 @@ const modernFilter = [
 let disable = true;
 
 const loading = document.querySelector(".loading");
-const loadingText = loading.querySelector(".loadingText");
-
-  const imgLoaded = (() => {
-    const imgs = document.querySelectorAll("img");
-    const len = imgs.length;
-    let total = 0;
-    let percent = 0;
-    loading.classList.add("active");
-  
-    loadingText.innerText = `${total} / ${len} (${percent}%)`;
-    imgs.forEach((img) => {
-      img.addEventListener("load", () => {
-        total++;
-        percent = parseInt((total / len) * 100);
-  
-        loadingText.innerText = `${total} / ${len} (${percent}%)`;
-        console.log(total);
-        if (total === len) {
-          loading.classList.remove("active");
-          setTimeout(() => {
-            loadingText.remove();
-          }, 1000)
-        }
-      });
-    });
-  })();
 
 
 for(let i=0; i<boothBoxs.length; i++) {
