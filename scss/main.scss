@@ -14,59 +14,6 @@ header {
 
 }
 
-aside {
-  position: absolute;
-  top: 10vh;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #020202;
-  opacity: 0;
-  color: #fff;
-  transition: .5s linear;
-
-  &.active {
-    opacity: 1;
-    z-index: 99;
-  }
-  
-  ul {
-    position: absolute;
-    top: 30%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: #c92933;
-    font-size: 10vw;
-    text-shadow: 1px 1px 4px #fff;
-
-    li {
-      margin-right: 2px;
-      animation-delay: 0;
-    
-      &:nth-of-type(6) {
-        animation: flowAni linear infinite 0.7s;
-        animation-delay: 0s;
-      }
-      &:nth-of-type(7) {
-        animation: flowAni linear infinite 0.7s;
-        animation-delay: .1s;
-      }
-      &:nth-of-type(8) {
-        animation: flowAni linear infinite 0.7s;
-        animation-delay: .2s;
-      }
-      &:nth-of-type(9) {
-        animation: flowAni linear infinite 0.7s;
-        animation-delay: .3s;
-      }
-      &:nth-of-type(10) {
-        animation: flowAni linear infinite 0.7s;
-        animation-delay: .4s;
-      }
-    }
-  }
-}
 
 @keyframes flowAni {
   0% {
@@ -82,10 +29,65 @@ aside {
 
 $contentBoxHeight: 90vh;
 .contentBox {
+  position: relative;
   width: 100%;
   height: $contentBoxHeight;
   min-height: calc(740px - 10vh);
   padding: 0% 3% 5%;
+
+  aside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #020202;
+    opacity: 0;
+    color: #fff;
+    transition: .5s linear;
+  
+    &.active {
+      opacity: 1;
+      z-index: 99;
+    }
+    
+    ul {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      color: #c92933;
+      font-size: 10vw;
+      text-shadow: 1px 1px 4px #fff;
+  
+      li {
+        margin-right: 2px;
+        animation-delay: 0;
+      
+        &:nth-of-type(6) {
+          animation: flowAni linear infinite 0.7s;
+          animation-delay: 0s;
+        }
+        &:nth-of-type(7) {
+          animation: flowAni linear infinite 0.7s;
+          animation-delay: .1s;
+        }
+        &:nth-of-type(8) {
+          animation: flowAni linear infinite 0.7s;
+          animation-delay: .2s;
+        }
+        &:nth-of-type(9) {
+          animation: flowAni linear infinite 0.7s;
+          animation-delay: .3s;
+        }
+        &:nth-of-type(10) {
+          animation: flowAni linear infinite 0.7s;
+          animation-delay: .4s;
+        }
+      }
+    }
+  }
 
   .contentInner {
     width: 100%;
