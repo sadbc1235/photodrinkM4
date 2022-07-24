@@ -61,14 +61,6 @@ aside ul li:nth-of-type(10) {
   animation: flowAni linear infinite 0.7s;
   animation-delay: 0.4s;
 }
-aside .loadingText {
-  text-align: center;
-  color: #fff;
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  font-size: 9vw;
-}
 
 @keyframes flowAni {
   0% {
