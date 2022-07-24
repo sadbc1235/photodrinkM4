@@ -119,6 +119,7 @@ for(let i=0; i<boothBoxs.length; i++) {
 
   // concept button click event
   let boothImg = boothBoxs[i].querySelector(".boothImg");
+  let mainImg = boothImg.querySelector(".mainImg");
   let filters = boothImg.querySelectorAll(".filter");
   let conceptImg = boothImg.querySelector(".conceptImgBox").querySelector("img");
   let filterListBox = intoConceptBtn.querySelector(".filterListBox");
@@ -131,7 +132,7 @@ for(let i=0; i<boothBoxs.length; i++) {
     conceptItems[j].addEventListener("click", () => {
 
       boothExplain.style.opacity = 0;
-      
+      mainImg.style.opacity = 0;
       for (let j=0; j<filters.length; j++) {
         filters[j].classList.remove("active");
         filters[j].classList.remove("active2");
@@ -289,6 +290,7 @@ for(let i=0; i<boothBoxs.length; i++) {
     // back button click event
     backBtn.addEventListener("click", () => {
       boothExplain.style.opacity = 0;
+      mainImg.style.opacity = 1;
 
       for (let j=0; j<filters.length; j++) {
         filters[j].classList.remove("active");
