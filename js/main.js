@@ -248,10 +248,8 @@ for(let i=0; i<boothBoxs.length; i++) {
       }
 
       conceptImg.addEventListener("load", () => {
-        setTimeout(() => {
           filterListBox.style.opacity = 1;
           conceptImg.style.opacity = 1;
-        }, 300)
         boothImg.classList.add("active");
       })
       
