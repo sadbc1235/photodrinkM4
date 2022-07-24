@@ -21,7 +21,7 @@ const fullConceptImgSrc = {
   neon: "/images/full/concepts/neon/neon.png",
   profile: "/images/full/concepts/profile/profile.png",
   modern: "/images/full/concepts/modern/modern.png",
-  art: "/images/full/concepts/art/nightsky.png",
+  art: "/images/full/concepts/modern/modern.png",
 };
 const dynamicConceptImgSrc = "/images/dynamic/dynamic.jpg"
 
@@ -50,6 +50,10 @@ const artBtnImg = [
   "background: url('/images/full/cloud.png'); background-size: cover;", // night sky
   "background: url('/images/full/butterfly.png'); background-size: cover;", // butterfly
   "background: url('/images/full/heart.png'); background-size: cover;", // moon
+]
+const dynamicBtnImg = [
+  "background: url('/images/dynamic/dynamicbtn.jpg'); background-size: cover;", // photo
+  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
 ]
 const modernFilter = [
   "#888", // soft
@@ -134,6 +138,8 @@ for(let i=0; i<boothBoxs.length; i++) {
     
 
     conceptItems[j].addEventListener("click", () => {
+      document.querySelector("video").pause();
+      document.querySelector("video").currentTime = 0;
 
       boothExplain.style.opacity = 0;
       mainImg.style.opacity = 0;
@@ -241,6 +247,8 @@ for(let i=0; i<boothBoxs.length; i++) {
             circles[i].style = artBtnImg[i];
             filterNames[i].innerText = conceptName.art[i];
           }
+          filters[0].classList.add("active2");
+          filterNames[0].classList.add("active");
         }, 200)
         
       } else if(conceptItems[j].innerText.includes("Dynamic")) {
@@ -249,7 +257,7 @@ for(let i=0; i<boothBoxs.length; i++) {
           conceptImg.setAttribute("src", dynamicConceptImgSrc);
           filters[0].style = dynamicFilter;
           for(let i=0; i<conceptName.dynamic.length; i++) {
-            circles[i].style = artBtnImg[i];
+            circles[i].style = dynamicBtnImg[i];
             filterNames[i].innerText = conceptName.dynamic[i];
           }
         }, 200)
@@ -284,10 +292,17 @@ for(let i=0; i<boothBoxs.length; i++) {
            filterNames[i].innerText == "Night Sky" ||
            filterNames[i].innerText == "Butterfly" ||
            filterNames[i].innerText == "Full Moon" ||
-           filterNames[i].innerText == "Photo") {
+           filterNames[i].innerText == "Photo" ||
+           filterNames[i].innerText == "Video") {
 
           filters[i].classList.add("active2");
           filterNames[i].classList.add("active");
+          if (filterNames[i].innerText == "Video") {
+            document.querySelector("video").play();
+          } else {
+            document.querySelector("video").pause();
+            document.querySelector("video").currentTime = 0;
+          }
 
         } else {
           filters[i].classList.add("active");
@@ -300,6 +315,8 @@ for(let i=0; i<boothBoxs.length; i++) {
     // back button click event
     if(backBtnDisable) {
       backBtn.addEventListener("click", () => {
+        document.querySelector("video").pause();
+        document.querySelector("video").currentTime = 0;
         boothExplain.style.opacity = 0;
         conceptImg.style.opacity = 0;
   
