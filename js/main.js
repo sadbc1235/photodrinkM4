@@ -60,6 +60,35 @@ const modernFilter = [
 
 let disable = true;
 
+const loading = document.querySelector(".loading");
+const loadingText = loading.querySelector(".loadingText");
+
+  const imgLoaded = (() => {
+    const imgs = document.querySelectorAll("img");
+    const len = imgs.length;
+    let total = 0;
+    let percent = 0;
+    loading.classList.add("active");
+  
+    loadingText.innerText = `${total} / ${len} (${percent}%)`;
+    imgs.forEach((img) => {
+      img.addEventListener("load", () => {
+        total++;
+        percent = parseInt((total / len) * 100);
+  
+        loadingText.innerText = `${total} / ${len} (${percent}%)`;
+        console.log(total);
+        if (total === len) {
+          loading.classList.remove("active");
+          setTimeout(() => {
+            loadingText.remove();
+          }, 1000)
+        }
+      });
+    });
+  })();
+
+
 for(let i=0; i<boothBoxs.length; i++) {
   let intoConceptBtn = boothBoxs[i].querySelector(".intoConceptBtn");
   let boothInner = boothBoxs[i].querySelector(".boothInner");
@@ -150,6 +179,7 @@ for(let i=0; i<boothBoxs.length; i++) {
 
       conceptImg.style.opacity = 0;
       filterListBox.style.opacity = 0;
+      loading.classList.add("active");
 
       if(conceptItems[j].innerText.includes("NEON")) {
 
@@ -252,6 +282,7 @@ for(let i=0; i<boothBoxs.length; i++) {
           filterListBox.style.opacity = 1;
           conceptImg.style.opacity = 1;
         boothImg.classList.add("active");
+        loading.classList.remove("active");
       })
       
     })
@@ -290,6 +321,7 @@ for(let i=0; i<boothBoxs.length; i++) {
     // back button click event
     backBtn.addEventListener("click", () => {
       boothExplain.style.opacity = 0;
+      conceptImg.style.opacity = 0;
       mainImg.style.opacity = 1;
 
       for (let j=0; j<filters.length; j++) {

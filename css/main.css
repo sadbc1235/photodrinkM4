@@ -12,6 +12,75 @@ header h1 {
   color: #c92933;
 }
 
+aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #020202;
+  opacity: 0;
+  color: #fff;
+  transition: 0.5s linear;
+}
+aside.active {
+  opacity: 1;
+  z-index: 99;
+}
+aside ul {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #c92933;
+  font-size: 10vw;
+  text-shadow: 1px 1px 4px #fff;
+}
+aside ul li {
+  margin-right: 2px;
+  animation-delay: 0;
+}
+aside ul li:nth-of-type(6) {
+  animation: flowAni linear infinite 0.7s;
+  animation-delay: 0s;
+}
+aside ul li:nth-of-type(7) {
+  animation: flowAni linear infinite 0.7s;
+  animation-delay: 0.1s;
+}
+aside ul li:nth-of-type(8) {
+  animation: flowAni linear infinite 0.7s;
+  animation-delay: 0.2s;
+}
+aside ul li:nth-of-type(9) {
+  animation: flowAni linear infinite 0.7s;
+  animation-delay: 0.3s;
+}
+aside ul li:nth-of-type(10) {
+  animation: flowAni linear infinite 0.7s;
+  animation-delay: 0.4s;
+}
+aside .loadingText {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  font-size: 9vw;
+}
+
+@keyframes flowAni {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(-30%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 .contentBox {
   width: 100%;
   height: 90vh;
