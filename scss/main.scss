@@ -1,3 +1,16 @@
+.inner {
+  width: 100%;
+  height: 100%;
+}
+.p0 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ts {
+  transition: .4s linear;
+}
+
 header {
   width: 100%;
   height: 10vh;
@@ -7,425 +20,299 @@ header {
 
   h1 {
     width: 100%;
-    font-size: 5vh;
+    font-size: 35px;
     text-align: center;
     color: #c92933;
   }
 
 }
 
-
-@keyframes flowAni {
-  0% {
-    transform: translateY(0%);
-  }
-  50% {
-    transform: translateY(-30%);
-  }
-  100%{
-    transform: translateY(0%);
-  }
-}
-
-$contentBoxHeight: 90vh;
-.contentBox {
-  position: relative;
+.content {
   width: 100%;
-  height: $contentBoxHeight;
+  height: 90vh;
   min-height: calc(740px - 10vh);
-  padding: 0% 3% 5%;
+  padding: 0px 10px;
 
-  aside {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #020202;
-    opacity: 0;
-    color: #fff;
-    transition: .5s linear;
-  
-    &.active {
-      opacity: 1;
-      z-index: 99;
-    }
-    
-    ul {
-      position: absolute;
-      top: 30%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      color: #c92933;
-      font-size: 10vw;
-  
-      li {
-        margin-right: 2px;
-        animation-delay: 0;
-      
-        &:nth-of-type(6) {
-          animation: flowAni linear infinite 0.7s;
-          animation-delay: 0s;
-        }
-        &:nth-of-type(7) {
-          animation: flowAni linear infinite 0.7s;
-          animation-delay: .1s;
-        }
-        &:nth-of-type(8) {
-          animation: flowAni linear infinite 0.7s;
-          animation-delay: .2s;
-        }
-        &:nth-of-type(9) {
-          animation: flowAni linear infinite 0.7s;
-          animation-delay: .3s;
-        }
-        &:nth-of-type(10) {
-          animation: flowAni linear infinite 0.7s;
-          animation-delay: .4s;
-        }
-      }
-    }
-  }
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  .contentInner {
-    width: 100%;
-    height: 100%;
-
-    .boothBoxWrapper {
+    .cardBox {
       position: relative;
-      overflow: hidden;
-      width: 100%;
+      width: 350px;
       height: 100%;
 
-      .boothBox {
+      .card {
         position: absolute;
-        top: 0;
+        left: 0;
         width: 100%;
-        height: calc(100% / 4);
-        padding: 2.5% 7%;
-        display: flex;
-        border-bottom: 1px solid #333;
-        transition: .25s linear;
+        height: 25%;
+        padding: 10px 0px;
+        box-shadow: inset 0 -1px 1px #333;
 
-        &:nth-of-type(2) {
-          top: calc(100% / 4);
-        }
-
-        &:nth-of-type(3) {
-          top: calc((100% / 4) * 2);
-        }
-
-        &:nth-of-type(4) {
-          top: calc((100% / 4) * 3);
-        }
-
-        &.active {
-          top: 0;
-          height: 100%;
-          padding: 2.5% 2.5%;
-          display: block;
-
-          .boothInner {
-            width: 100%;
-            .boothName {
-              width: 100%;
-            }
-
-            .intoConceptBtn {
-              width: 100%;
-              height: 17%;
-
-              .btnName {
-                opacity: 0;
-              }
-
-            }
-          }
-
-          .boothImg {
-            width: 100%;
-            height: 60%;
-            top: 10%;
-          }
-
-        }
-
-        &.fadeout {
+        &.fadeOut {
           opacity: 0;
         }
 
-        .boothInner {
-          width: 60%;
+        &.showCon {
+          opacity: 1;
           height: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          flex-direction: column;
-          justify-content: space-between;
-          transition: .25s linear;
 
-          .boothName {
+          .cardImg {
+            top: 10%;
             width: 100%;
-            font-size: 6vw;
+            height: 60%;
+          }// cardImg
+
+          .cardBtn {
+            width: 100%;
+            height: 20%;
+          }
+
+        }
+        
+        .inner {
+          position: relative;
+        }
+
+        .cardName {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 55%;
+          height: 56px;
+
+          h2 {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 35px;
             text-shadow: 0px 0px 10px #c92933;
             color: #fff;
-            transition: .25s linear;
-            display: flex;
-            justify-content: space-between;
+          }
+        }// cardName
 
-            .backBtn {
-              position: relative;
-              opacity: 0;
-              display: none;
-              padding: 1% 3%;
-              justify-content: center;
-              align-items: center;
-              color: #c92933;
-              text-shadow: none;
-              border: 1.5px solid #c92933;
-              border-radius: 10px 0 10px 0;
-              transition: .25s linear;
-              z-index: 99;
+        .cardImg {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 40%;
+          height: 100%;
+          border-radius: 0 0 15px 0;
+          overflow: hidden;
+
+          .imgFilter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            transition: .3s linear;
+
+            &.showFilter {
+              opacity: .3;
             }
           }
 
-          .intoConceptBtn {
-            position: relative;
-            width: 60%;
-            padding: 2% 5%;
-            margin-bottom: 5%;
+          .mainImg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .3s linear;
+
+            &.closeImg {
+              opacity: 0;
+            }
+          }
+        }// cardImg
+
+        .cardBtn {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 30%;
+          height: 40%;
+          border-radius: 15px 0 15px 0;
+          border: 3px solid #c92933;
+
+          .btnName {
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #c92933;
-            font-size: 6vw;
-            border: 1.5px solid #c92933;
-            border-radius: 10px 0 10px 0;
-            transition: .25s linear;
+            font-size: 27px;
+            opacity: 0;
+            background-color: #020202;
+            border-radius: 15px 0 15px 0;
+            z-index: 3;
 
-            .conceptListBox {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 50%;
-              opacity: 0;
-              transition: .25s linear;
-              display: none;
-    
-              .conceptList {
-                width: 100%;
-                height: 100%;
-                padding-top: 3%;
-                display: flex;
-                color: #fff;
-                font-size: 4vw;
-    
-                .conceptItem {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  text-align: center;
-                  width: 23%;
-                  height: 100%;
-                  padding: 1% 0%;
-                  margin-right: 5%;
-                  border: 1.5px solid #fff;
-                  border-radius: 17px 0 17px 0;
-                  font-weight: bold;
-                  transition: .2s linear;
+            &.showName {
+              opacity: 1;
+              z-index: 5;
+            }
+          }// btnName
 
-                  &.active {
-                    border: 1.5px solid #c92933;
-                    color: #c92933;
-                    text-shadow: 0px 0px 10px #c92933;
-                  }
-                  
-                  &:nth-of-type(1) {
-                    transition-delay: 0s;
-                  }
-                  &:nth-of-type(2) {
-                    transition-delay: .2s;
-                  }
-                  &:nth-of-type(3) {
-                    font-size: 3.5vw;
-                    transition-delay: .4s;
-                  }
-                  &:nth-of-type(4) {
-                    transition-delay: .6s;
-                  }
-                }
-              }
+          .cardExplain {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            opacity: 0;
+            color: #fff;
+            font-size: 18px;
+            background-color: #020202;
+            border-radius: 15px 0 15px 0;
+            z-index: 2;
+
+            &.showEx {
+              opacity: 1;
+              z-index: 4;
             }
 
-            .btnName {
-              transition: .25s linear;
+            span {
+              text-shadow: 1px 1px 3px #fd0011;
+              font-size: 19px;
             }
+          }// cardExplain
 
-            .boothExplain {
-              position: absolute;
-              top: 0;
-              left: 0;
-              padding: 2% 3%;
-              width: 100%;
-              font-size: 4.4vw;
-              color: rgb(218, 218, 218);
-              letter-spacing: 1px;
-              transition: .1s linear;
-              opacity: 0;
-              z-index: 1;
-              background-color: #020202;
-              border-radius: 10px 0 10px 0;
-    
-              span {
-                font-weight: bold;
-                font-size: 4.5vw;
-                text-shadow: 1px 1px 3px #fd0011;
-              }
-            }
+          .conBtnBox {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            background-color: #020202;
+            border-radius: 15px 0 15px 0;
+            z-index: 1;
 
-            .filterListBox {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              display: flex;
-              align-items: center;
-              opacity: 0;
-              transition: .25s linear;
-              z-index: 2;
-              background-color: #020202;
-              border-radius: 10px 0 10px 0;
-
-              .filterList {
-                width: 100%;
-                height: 80%;
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-
-                .filterItem {
-                  width: 25%;
-                  height: 100%;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: space-evenly;
-
-                  .circle {
-                    width: 13vw;
-                    height: 13vw;
-                    border-radius: 50%;
-                    box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.349);
-                  }
-
-                  .filterName {
-                    color: #fff;
-                    font-size: 3vw;
-                    transition: .25s linear;
-
-                    &.active {
-                      color: #c92933;
-                    }
-                  }
-                }
-              }
-            }
-          }
-
-        }
-
-        .boothImg {
-          position: absolute;
-          top: 5%;
-          right: 0;
-          width: 40%;
-          height: 90%;
-          overflow: hidden;
-          border-radius: 0 0 20px 0;
-          box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.13);
-          transition: .25s linear;
-
-          &.active {
-            > img {
-              opacity: 0;
-            }
-
-            .conceptImgBox {
+            &.showBtnBox {
               opacity: 1;
             }
-          }
-          
-          > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(1.5);
-            opacity: 1;
-            transition: .25s linear;
-          }
 
-          .conceptImgBox {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: .25s linear;
-
-            .filter {
+            .conBtn {
               position: absolute;
               top: 0;
-              left: 0;
-              width: 100%;
+              width: 23%;
               height: 100%;
-              opacity: 0;
-              transition: .25s linear all;
-              z-index: 2;
-              object-fit: cover;
-              filter: saturate(1.5);
-
-              &.active {
-                opacity: .3;
-              }
-              &.active2 {
-                opacity: 1;
-              }
-
-              figure {
-                width: 100%;
-                height: 100%;
-
-                video {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  transform: rotate(-90deg);
-                }
-              }
-              
-            }
-
-            img {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              filter: saturate(1.5);
-              z-index: 1;
+              border-radius: 15px 0 15px 0;
+              border: 2px solid #fff;
+              color: #fff;
+              display: flex;
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+              font-size: 17px;
               transition: .2s linear;
+
+              &.showConBtn {
+                top: -60px;
+              }
+              &.active {
+               border-color: #c92933;
+               color: #c92933; 
+              }
+
+              &:nth-of-type(1) {
+                left: 0;
+              }
+              &:nth-of-type(2) {
+                left: 25%;
+              }
+              &:nth-of-type(3) {
+                font-size: 16px;
+                left: 50%;
+              }
+              &:nth-of-type(4) {
+                left: 75%;
+              }
             }
+          }// conBtnBox
 
+          .conBox {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 3;
+            opacity: 0;
+            transition: .3s linear;
+
+            &.showConBox {
+              z-index: 4;
+              opacity: 1;
+            }
+            
+            .con {
+              width: 25%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+              .conCircle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+              }// conCircle
+
+              .conName {
+                height: 40px;
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 16px;
+                color: #fff;
+              }// conName
+            }// con
+          }// conBox
+        }// cardBtn
+
+        .cardClose {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 30%;
+          height: 52px;
+          border-radius: 15px 0 15px 0;
+          border: 3px solid #c92933;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #c92933;
+          font-size: 27px;
+          opacity: 0;
+          transition: .2s linear;
+
+          &.showClose {
+            opacity: 1;
           }
+        }// cardClose
+      } // card
 
-        }
+      .bust {
+        top: 0;
+      }// bust
 
-      } // boothBox
+      .metal {
+        top: 25%;
+      }// metal
 
-    } // boothBoxWrapper
+      .profile {
+        top: 50%;
+      }// profile
 
-  } // contentInner
+      .dyna {
+        top: 75%;  
+      }// dyna
 
-} // contentBox
+    }// cardBox
+  }// inner
+}// content
