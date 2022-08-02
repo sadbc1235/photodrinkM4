@@ -1,5 +1,4 @@
 
-const boothBoxs = document.querySelectorAll(".boothBox");
 const conceptName = {
   neon: ["Sweet Peach", "Mango Green", "Mixed<br> Blue", "Shadow Pink"],
   profile: ["Soft-Right", "Soft-Left", "Contrast Right", "Contrast Left"],
@@ -7,6 +6,13 @@ const conceptName = {
   art: ["Heart", "Night Sky", "Butterfly", "Full Moon"],
   dynamic: ["Photo", "Video"]
 };
+
+const mainImgSrc = {
+  bust: "/images/bust/bustmain1.png",
+  metal: "/images/metal/metal4.jpg",
+  full: "/images/full/fullshot5.jpg",
+  dynamic: "/images/dynamic/dynamic2.jpg"
+}
 const bustConceptImgSrc = {
   neon: "/images/bust/concepts/neon/neon.png",
   profile: "/images/bust/concepts/profile/profile.png",
@@ -26,22 +32,22 @@ const fullConceptImgSrc = {
 const dynamicConceptImgSrc = "/images/dynamic/dynamic.jpg"
 
 const neonFilter = [
-  "linear-gradient(90deg, rgba(240,109,178,.7) 40%, rgba(255,141,131,.7) 60%)", // sweet peach
-  "linear-gradient(90deg, rgba(224,104,76,.7) 40%, rgba(118,159,57,.7) 60%)", // mango green
-  "linear-gradient(90deg, rgba(172,139,162,1) 40%, rgba(21,177,227,.7) 60%)", // mixed blue
-  "linear-gradient(90deg, rgba(206,96,160,1) 40%, rgba(204,175,179,1) 60%)" // shadow pink
+  "linear-gradient(90deg, rgba(240,109,178,.3) 40%, rgba(255,141,131,.3) 60%)", // sweet peach
+  "linear-gradient(90deg, rgba(224,104,76,.3) 40%, rgba(118,159,57,.3) 60%)", // mango green
+  "linear-gradient(90deg, rgba(172,139,162,.3) 40%, rgba(21,177,227,.3) 60%)", // mixed blue
+  "linear-gradient(90deg, rgba(206,96,160,.3) 40%, rgba(204,175,179,.3) 60%)" // shadow pink
 ]
 const profileFilter = [
-  "linear-gradient(90deg, rgba(170,170,170,1) 45%, rgba(238,238,238,.7) 55%)", // soft-right
-  "linear-gradient(90deg, rgba(238,238,238,.7) 45%, rgba(170,170,170,1) 55%)", // soft-left
-  "linear-gradient(90deg, rgba(170,170,170,1) 45%, rgba(255,255,255,.8) 55%)", // contrast-right
-  "linear-gradient(90deg, rgba(255,255,255,.8) 45%, rgba(170,170,170,1) 55%)" // contrast-left
+  "linear-gradient(90deg, rgba(170,170,170,.3) 45%, rgba(238,238,238,.3) 55%)", // soft-right
+  "linear-gradient(90deg, rgba(238,238,238,.3) 45%, rgba(170,170,170,.3) 55%)", // soft-left
+  "linear-gradient(90deg, rgba(170,170,170,.3) 45%, rgba(255,255,255,.3) 55%)", // contrast-right
+  "linear-gradient(90deg, rgba(255,255,255,.3) 45%, rgba(170,170,170,.3) 55%)" // contrast-left
 ]
 const artFilter = [
-  "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: contain;",
-  "background: url('/images/full/concepts/art/nightsky.png') no-repeat center; background-size: contain;",
-  "background: url('/images/full/concepts/art/butterfly.png') no-repeat center; background-size: contain;",
-  "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: contain;",
+  "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: cover;",
+  "background: url('/images/full/concepts/art/nightsky.png') no-repeat center; background-size: cover;",
+  "background: url('/images/full/concepts/art/butterfly.png') no-repeat center; background-size: cover;",
+  "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: cover;",
 ]
 const dynamicFilter = "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;"
 
@@ -56,12 +62,11 @@ const dynamicBtnImg = [
   "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
 ]
 const modernFilter = [
-  "#888", // soft
-  "#555", // contrast
-  "rgba(255,201,90,.2)", // sepia
-  "rgba(75,158,219,.3)" // blue
+  "rgba(136, 136, 136, .2)", // soft
+  "rgba(85, 85, 85,.2)", // contrast
+  "rgba(255,201,90,.1)", // sepia
+  "rgba(75,158,219,.1)" // blue
 ]
-const cardBtn = document.querySelector(".cardBtn .btnName");
 const cards = document.querySelectorAll(".card");
 
 const clickMore = (e) => {
@@ -93,7 +98,9 @@ const clickMore = (e) => {
           conBtns[1].classList.add("showConBtn");
     
           setTimeout(() => {
-            conBtns[2].classList.add("showConBtn");
+            if(conBtns.length >= 3) {
+              conBtns[2].classList.add("showConBtn");
+            }
             
             if(conBtns.length == 4) {
               setTimeout(() => {
@@ -118,9 +125,11 @@ const clickConBtn = (e) => {
   const mainImg = card.querySelector(".mainImg");
   const cardExplain = card.querySelector(".cardExplain");
   const conBox = card.querySelector(".conBox");
+  const cons = conBox.querySelectorAll(".con");
   const conNames = conBox.querySelectorAll(".conName");
   const conCircle = conBox.querySelectorAll(".conCircle");
   const imgFilter = card.querySelectorAll(".imgFilter");
+
 
   cardExplain.classList.remove("showEx");
   conBox.classList.remove("showConBox");
@@ -129,74 +138,159 @@ const clickConBtn = (e) => {
   for(let i=0; i<imgFilter.length; i++) {
     imgFilter[i].classList.remove("showFilter");
   }
-
-  let boothSrc;
-  if(card.className.includes("bust")) {
-
-    if(card.className.includes("bust")) {
-      boothSrc = bustConceptImgSrc;
-    } else if(card.className.includes("metal")) {
-      boothSrc = metalConceptImgSrc;
-    } else if(card.className.includes("profile")) {
-      boothSrc = fullConceptImgSrc;
-    } else if(card.className.includes("dyna")) {
-      boothSrc = dynamicConceptImgSrc;
-    }
-
-    let currentConBtn = conBtnBox.querySelector(".active");
-
-    setTimeout(() => {
-      switch(currentConBtn.innerText) {
-        case "NEON":
-          mainImg.setAttribute("src", boothSrc.neon);
-          for(let i=0; i<conNames.length; i++) {
-            conNames[i].innerHTML = conceptName.neon[i];
-            conCircle[i].style.background = neonFilter[i];
-            imgFilter[i].style.background = neonFilter[i];
-          }
-        break;
-        case "Profile":
-          mainImg.setAttribute("src", boothSrc.profile);
-          for(let i=0; i<conNames.length; i++) {
-            conNames[i].innerHTML = conceptName.profile[i];
-            conCircle[i].style.background = profileFilter[i];
-            imgFilter[i].style.background = profileFilter[i];
-          }
-        break;
-        case "Modern Black":
-          mainImg.setAttribute("src", boothSrc.modern);
-          for(let i=0; i<conNames.length; i++) {
-            conNames[i].innerHTML = conceptName.modern[i];
-            conCircle[i].style.background = modernFilter[i];
-            imgFilter[i].style.background = modernFilter[i];
-          }
-        break;
-      }
-      
-      mainImg.addEventListener("load", () => {
-        conBox.classList.add("showConBox");
-        mainImg.classList.remove("closeImg");
-      })
-    }, 400)
+  for(let i=0; i<cons.length; i++) {
+    cons[i].classList.remove("active");
   }
 
+  let boothSrc;
+
+  if(card.className.includes("bust")) {
+    boothSrc = bustConceptImgSrc;
+  } else if(card.className.includes("metal")) {
+    boothSrc = metalConceptImgSrc;
+  } else if(card.className.includes("profile")) {
+    boothSrc = fullConceptImgSrc;
+  } else if(card.className.includes("dyna")) {
+    boothSrc = dynamicConceptImgSrc;
+  }
+
+  let currentConBtn = conBtnBox.querySelector(".active");
+
+  setTimeout(() => {
+    switch(currentConBtn.innerText) {
+      case "NEON":
+        mainImg.setAttribute("src", boothSrc.neon);
+        for(let i=0; i<conNames.length; i++) {
+          conNames[i].innerHTML = conceptName.neon[i];
+          conCircle[i].style.background = neonFilter[i];
+          imgFilter[i].style.background = neonFilter[i];
+        }
+      break;
+      case "Profile":
+        mainImg.setAttribute("src", boothSrc.profile);
+        for(let i=0; i<conNames.length; i++) {
+          conNames[i].innerHTML = conceptName.profile[i];
+          conCircle[i].style.background = profileFilter[i];
+          imgFilter[i].style.background = profileFilter[i];
+        }
+      break;
+      case "Modern Black":
+        mainImg.setAttribute("src", boothSrc.modern);
+        for(let i=0; i<conNames.length; i++) {
+          conNames[i].innerHTML = conceptName.modern[i];
+          conCircle[i].style.background = modernFilter[i];
+          imgFilter[i].style.background = modernFilter[i];
+        }
+      break;
+      case "Art":
+        mainImg.setAttribute("src", boothSrc.modern);
+        for(let i=0; i<conNames.length; i++) {
+          conNames[i].innerHTML = conceptName.art[i];
+          conCircle[i].style = artBtnImg[i];
+          imgFilter[i].style = artFilter[i];
+        }
+      break;
+    }
+    
+    mainImg.addEventListener("load", () => {
+      mainImg.classList.remove("closeImg");
+    })
+    conBox.classList.add("showConBox");
+  }, 400)
 }
 
-cardBtn.addEventListener("click", (e) => {
-  clickMore(e);
-})
+const clickClose = (e) => {
+  const card = e.path[2];
+  const cardClose = card.querySelector(".cardClose");
+  const btnName = card.querySelector(".btnName");
+  const conBtnBox = card.querySelector(".conBtnBox");
+  const conBtns = card.querySelectorAll(".conBtn");
+  const mainImg = card.querySelector(".mainImg");
+  const cardExplain = card.querySelector(".cardExplain");
+  const conBox = card.querySelector(".conBox");
+  const cons = conBox.querySelectorAll(".con");
+  const conNames = conBox.querySelectorAll(".conName");
+  const conCircle = conBox.querySelectorAll(".conCircle");
+  const imgFilter = card.querySelectorAll(".imgFilter");
+
+  for(let i=0; i<imgFilter.length; i++) {
+    imgFilter[i].classList.remove("showFilter");
+    cons[i].classList.remove("active");
+  }
+  conBtns.forEach(conBtn => {
+    conBtn.classList.remove("active");
+    conBtn.classList.remove("showConBtn");
+  })
+  conBox.classList.remove("showConBox");
+  cardClose.classList.remove("showClose");
+  mainImg.classList.add("closeImg");
+
+  setTimeout(() => {
+    let boothSrc;
+
+    if(card.className.includes("bust")) {
+      boothSrc = mainImgSrc.bust;
+    } else if(card.className.includes("metal")) {
+      boothSrc = mainImgSrc.metal;
+    } else if(card.className.includes("profile")) {
+      boothSrc = mainImgSrc.full;
+    } else if(card.className.includes("dyna")) {
+      boothSrc = mainImgSrc.dynamic;
+    }
+
+    mainImg.setAttribute("src", boothSrc);
+
+    mainImg.addEventListener("load", () => {
+      mainImg.classList.remove("closeImg");
+    })
+    conBtnBox.classList.remove("showBtnBox");
+    card.classList.remove("showCon");
+    btnName.classList.add("showName");
+
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.classList.remove("fadeOut");
+      })
+    }, 500)
+  }, 400)
+}
 
 cards.forEach(card => {
   const conBtnBox = card.querySelector(".conBtnBox");
   const conBtns = conBtnBox.querySelectorAll(".conBtn");
-
-  conBtns.forEach(conBtn => {
-    conBtn.addEventListener("click", (e) => {
-      for(let i=0; i<conBtns.length; i++) {
-        conBtns[i].classList.remove("active");
-      }
-      conBtn.classList.add("active");
-      clickConBtn(e);
+  const cardBtn = card.querySelector(".cardBtn .btnName");
+  const cons = card.querySelectorAll(".con");
+  const filters = card.querySelectorAll(".imgFilter");
+  const cardClose = card.querySelector(".cardClose");
+    cardBtn.addEventListener("click", (e) => {
+      clickMore(e);
     })
-  })
+
+    conBtns.forEach(conBtn => {
+      conBtn.addEventListener("click", (e) => {
+        for(let i=0; i<conBtns.length; i++) {
+          conBtns[i].classList.remove("active");
+        }
+        conBtn.classList.add("active");
+        clickConBtn(e);
+      })
+    })
+
+    for(let i=0; i<cons.length; i++) {
+      cons[i].addEventListener("click", () => {
+        filters.forEach(filter => {
+          filter.classList.remove("showFilter");
+        })
+        for(let i=0; i<cons.length; i++) {
+          cons[i].classList.remove("active");
+        }
+        cons[i].classList.add("active");
+        filters[i].classList.add("showFilter");
+      })
+    }
+
+
+    cardClose.addEventListener("click", (e) => {
+      clickClose(e);
+    })
 })
