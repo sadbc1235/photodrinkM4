@@ -140,12 +140,13 @@ const clickConBtn = (e) => {
   const conNames = conBox.querySelectorAll(".conName");
   const conCircle = conBox.querySelectorAll(".conCircle");
   const imgFilter = card.querySelectorAll(".imgFilter");
+  const loading = card.querySelector(".loading");
 
 
   cardExplain.classList.remove("showEx");
   conBox.classList.remove("showConBox");
   mainImg.classList.add("closeImg");
-
+  loading.classList.add("active");
   for(let i=0; i<imgFilter.length; i++) {
     imgFilter[i].classList.remove("showFilter");
   }
@@ -200,6 +201,8 @@ const clickConBtn = (e) => {
           conCircle[i].style = artBtnImg[i];
           imgFilter[i].style = artFilter[i];
         }
+        imgFilter[0].classList.add("showFilter");
+        cons[0].classList.add("active");
       break;
       case "Dynamic":
         mainImg.setAttribute("src", boothSrc);
@@ -212,6 +215,7 @@ const clickConBtn = (e) => {
     
     mainImg.addEventListener("load", () => {
       mainImg.classList.remove("closeImg");
+      loading.classList.remove("active");
     })
     conBox.classList.add("showConBox");
   }, 400)
