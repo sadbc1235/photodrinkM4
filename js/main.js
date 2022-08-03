@@ -316,7 +316,7 @@ const clickClose = (e) => {
         card.classList.remove("fadeOut");
       })
       galleryBtn.style.display = "none";
-    }, 500)
+    }, 100)
   }, 400)
 }
 
