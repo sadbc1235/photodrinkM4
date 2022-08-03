@@ -223,6 +223,7 @@ const clickClose = (e) => {
   })
   conBox.classList.remove("showConBox");
   cardClose.classList.remove("showClose");
+  cardExplain.classList.remove("showEx");
   mainImg.classList.add("closeImg");
 
   setTimeout(() => {
