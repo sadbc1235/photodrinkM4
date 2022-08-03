@@ -96,20 +96,6 @@ const clickMore = (e) => {
 
   galleryBtn.style.display = "block";
 
-  if(card.className.includes("bust")) {
-    imgLength = 25;
-    boothName = "bust";
-  } else if(card.className.includes("metal")) {
-    imgLength = 26;
-    boothName = "metal";
-  } else if(card.className.includes("profile")) {
-    imgLength = 25;
-    boothName = "full";
-  } else if(card.className.includes("dyna")) {
-    imgLength = 8;
-    boothName = "dyna";
-  }
-
   cards.forEach(card => {
     card.classList.add("fadeOut");
   })
@@ -143,9 +129,9 @@ const clickMore = (e) => {
             }
 
             setTimeout(() => {
-              loadGallery(imgLength, boothName);
               cardClose.classList.add("showClose");
               galleryBtn.classList.add("showBtn");
+
             }, 400)
           }, 200)
         }, 200)
@@ -330,7 +316,6 @@ const clickClose = (e) => {
         card.classList.remove("fadeOut");
       })
       galleryBtn.style.display = "none";
-      cleanGallery();
     }, 500)
   }, 400)
 }
@@ -352,6 +337,20 @@ cards.forEach(card => {
   const cardClose = card.querySelector(".cardClose");
     cardBtn.addEventListener("click", (e) => {
       clickMore(e);
+      if(card.className.includes("bust")) {
+        imgLength = 25;
+        boothName = "bust";
+      } else if(card.className.includes("metal")) {
+        imgLength = 26;
+        boothName = "metal";
+      } else if(card.className.includes("profile")) {
+        imgLength = 25;
+        boothName = "full";
+      } else if(card.className.includes("dyna")) {
+        imgLength = 8;
+        boothName = "dyna";
+      }
+      loadGallery(imgLength, boothName);
     })
 
     conBtns.forEach(conBtn => {
@@ -385,5 +384,6 @@ cards.forEach(card => {
 
     cardClose.addEventListener("click", (e) => {
       clickClose(e);
+      cleanGallery();
     })
 })
