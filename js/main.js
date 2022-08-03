@@ -271,7 +271,7 @@ const loadGallery = (imgLength, boothName) => {
   }
 }
 const cleanGallery = () => {
-  gallery.innerHTML = ""
+  gallery.innerText = ""
 }
 
 const clickClose = (e) => {
