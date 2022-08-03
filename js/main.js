@@ -29,7 +29,7 @@ const fullConceptImgSrc = {
   modern: "/images/full/concepts/modern/modern.png",
   art: "/images/full/concepts/modern/modern.png",
 };
-const dynamicConceptImgSrc = "/images/dynamic/concept/dynamic.jpg"
+const dynamicConceptImgSrc = "/images/dynamic/dynamic.jpg"
 
 const neonFilter = [
   "linear-gradient(90deg, rgba(240,109,178,.3) 40%, rgba(255,141,131,.3) 60%)", // sweet peach
@@ -73,6 +73,10 @@ const initVideo = () => {
   document.querySelector("video").currentTime = 0;
 }
 
+const playVideo = () => {
+  document.querySelector("video").play();
+}
+
 const clickMore = (e) => {
   const card = e.path[3];
   const cardClose = card.querySelector(".cardClose");
@@ -99,7 +103,9 @@ const clickMore = (e) => {
         conBtns[0].classList.add("showConBtn");
 
         setTimeout(() => {
-          conBtns[1].classList.add("showConBtn");
+          if(conBtns.length >= 2) {
+            conBtns[1].classList.add("showConBtn");
+          }
     
           setTimeout(() => {
             if(conBtns.length >= 3) {
@@ -197,7 +203,7 @@ const clickConBtn = (e) => {
       break;
       case "Dynamic":
         mainImg.setAttribute("src", boothSrc);
-        imgFilter[i].style = dynamicFilter[i];
+        imgFilter[0].style = dynamicFilter;
         for(let i=0; i<conNames.length; i++) {
           conCircle[i].style = dynamicBtnImg[i];
         }
@@ -292,6 +298,11 @@ cards.forEach(card => {
 
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
+        const conName = cons[i].querySelector(".conName");
+
+        if(!conName.innerHTML.includes("Video")) {
+          initVideo();
+        }
         filters.forEach(filter => {
           filter.classList.remove("showFilter");
         })
