@@ -93,7 +93,6 @@ const clickMore = (e) => {
   const conBtns = conBtnBox.querySelectorAll(".conBtn");
   const btnName = e.target;
   const cardExplain = e.target.nextElementSibling;
-  const loading = card.querySelector(".loading");
 
   if(card.className.includes("bust")) {
     imgLength = 25;
@@ -109,12 +108,9 @@ const clickMore = (e) => {
     boothName = "dyna";
   }
 
-  loading.classList.add("active");
   galleryBtn.style.display = "block";
-
-  if(loadGallery(imgLength, boothName)) {
-    loading.classList.remove("active");
-  }
+  
+  // loadGallery(imgLength, boothName)
 
   cards.forEach(card => {
     card.classList.add("fadeOut");
@@ -276,11 +272,9 @@ const loadGallery = (imgLength, boothName) => {
     imgBox.append(img);
     gallery.append(imgBox);
   }
-  return true;
 }
 const cleanGallery = () => {
-  gallery.innerText = ""
-  return true;
+  gallery.innerText = null;
 }
 
 const clickClose = (e) => {
