@@ -29,7 +29,7 @@ const fullConceptImgSrc = {
   modern: "/images/full/concepts/modern/modern.png",
   art: "/images/full/concepts/modern/modern.png",
 };
-const dynamicConceptImgSrc = "/images/concept/dynamic.jpg"
+const dynamicConceptImgSrc = "/images/dynamic/concept/dynamic.jpg"
 
 const neonFilter = [
   "linear-gradient(90deg, rgba(240,109,178,.3) 40%, rgba(255,141,131,.3) 60%)", // sweet peach
