@@ -110,6 +110,16 @@ header h1 {
 .content .inner .cardBox .card .cardImg .imgFilter.showFilter {
   opacity: 1;
 }
+.content .inner .cardBox .card .cardImg .imgFilter figure {
+  width: 100%;
+  height: 100%;
+}
+.content .inner .cardBox .card .cardImg .imgFilter figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-90deg);
+}
 .content .inner .cardBox .card .cardImg .mainImg {
   width: 100%;
   height: 100%;

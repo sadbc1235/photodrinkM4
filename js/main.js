@@ -29,7 +29,7 @@ const fullConceptImgSrc = {
   modern: "/images/full/concepts/modern/modern.png",
   art: "/images/full/concepts/modern/modern.png",
 };
-const dynamicConceptImgSrc = "/images/dynamic/dynamic.jpg"
+const dynamicConceptImgSrc = "/images/concept/dynamic.jpg"
 
 const neonFilter = [
   "linear-gradient(90deg, rgba(240,109,178,.3) 40%, rgba(255,141,131,.3) 60%)", // sweet peach
@@ -68,6 +68,10 @@ const modernFilter = [
   "rgba(75,158,219,.1)" // blue
 ]
 const cards = document.querySelectorAll(".card");
+const initVideo = () => {
+  document.querySelector("video").pause();
+  document.querySelector("video").currentTime = 0;
+}
 
 const clickMore = (e) => {
   const card = e.path[3];
@@ -120,6 +124,7 @@ const clickMore = (e) => {
 }
 
 const clickConBtn = (e) => {
+  initVideo();
   const card = e.path[4];
   const conBtnBox = card.querySelector(".conBtnBox");
   const mainImg = card.querySelector(".mainImg");
@@ -190,6 +195,13 @@ const clickConBtn = (e) => {
           imgFilter[i].style = artFilter[i];
         }
       break;
+      case "Dynamic":
+        mainImg.setAttribute("src", boothSrc);
+        imgFilter[i].style = dynamicFilter[i];
+        for(let i=0; i<conNames.length; i++) {
+          conCircle[i].style = dynamicBtnImg[i];
+        }
+      break;
     }
     
     mainImg.addEventListener("load", () => {
@@ -200,6 +212,7 @@ const clickConBtn = (e) => {
 }
 
 const clickClose = (e) => {
+  initVideo();
   const card = e.path[2];
   const cardClose = card.querySelector(".cardClose");
   const btnName = card.querySelector(".btnName");
