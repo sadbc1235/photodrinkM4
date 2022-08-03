@@ -267,6 +267,7 @@ const closeGallery = () => {
 }
 
 const loadGallery = (imgLength, boothName) => {
+  cleanGallery()
   for (let i = 1; i <= imgLength; i++) {
     const imgBox = document.createElement("div");
     const img = document.createElement("img");
@@ -328,18 +329,15 @@ const clickClose = (e) => {
       mainImg.classList.remove("closeImg");
     })
     conBtnBox.classList.remove("showBtnBox");
+    card.classList.remove("showCon");
+    btnName.classList.add("showName");
 
-    if(cleanGallery()) {
-      card.classList.remove("showCon");
-      btnName.classList.add("showName");
-
-      setTimeout(() => {
-        cards.forEach(card => {
-          card.classList.remove("fadeOut");
-        })
-        galleryBtn.style.display = "none";
-      }, 300)
-    }
+    setTimeout(() => {
+      cards.forEach(card => {
+        card.classList.remove("fadeOut");
+      })
+      galleryBtn.style.display = "none";
+    }, 300)
   }, 400)
 }
 
