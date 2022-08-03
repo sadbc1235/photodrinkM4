@@ -110,8 +110,6 @@ const clickMore = (e) => {
     boothName = "dyna";
   }
 
-  loadGallery(imgLength, boothName);
-
   cards.forEach(card => {
     card.classList.add("fadeOut");
   })
@@ -145,6 +143,7 @@ const clickMore = (e) => {
             }
 
             setTimeout(() => {
+              loadGallery(imgLength, boothName);
               cardClose.classList.add("showClose");
               galleryBtn.classList.add("showBtn");
             }, 400)
@@ -277,7 +276,6 @@ const cleanGallery = () => {
 
 const clickClose = (e) => {
   initVideo();
-  cleanGallery();
   const card = e.path[2];
   const cardClose = card.querySelector(".cardClose");
   const btnName = card.querySelector(".btnName");
@@ -332,6 +330,7 @@ const clickClose = (e) => {
         card.classList.remove("fadeOut");
       })
       galleryBtn.style.display = "none";
+      cleanGallery();
     }, 500)
   }, 400)
 }
