@@ -93,8 +93,28 @@ const clickMore = (e) => {
   const conBtns = conBtnBox.querySelectorAll(".conBtn");
   const btnName = e.target;
   const cardExplain = e.target.nextElementSibling;
+  const loading = card.querySelector(".loading");
 
+  if(card.className.includes("bust")) {
+    imgLength = 25;
+    boothName = "bust";
+  } else if(card.className.includes("metal")) {
+    imgLength = 26;
+    boothName = "metal";
+  } else if(card.className.includes("profile")) {
+    imgLength = 25;
+    boothName = "full";
+  } else if(card.className.includes("dyna")) {
+    imgLength = 8;
+    boothName = "dyna";
+  }
+
+  loading.classList.add("active");
   galleryBtn.style.display = "block";
+
+  if(loadGallery(imgLength, boothName)) {
+    loading.classList.remove("active");
+  }
 
   cards.forEach(card => {
     card.classList.add("fadeOut");
@@ -255,9 +275,11 @@ const loadGallery = (imgLength, boothName) => {
     imgBox.append(img);
     gallery.append(imgBox);
   }
+  return true;
 }
 const cleanGallery = () => {
   gallery.innerText = ""
+  return true;
 }
 
 const clickClose = (e) => {
@@ -271,8 +293,6 @@ const clickClose = (e) => {
   const cardExplain = card.querySelector(".cardExplain");
   const conBox = card.querySelector(".conBox");
   const cons = conBox.querySelectorAll(".con");
-  const conNames = conBox.querySelectorAll(".conName");
-  const conCircle = conBox.querySelectorAll(".conCircle");
   const imgFilter = card.querySelectorAll(".imgFilter");
 
   for(let i=0; i<imgFilter.length; i++) {
@@ -308,15 +328,18 @@ const clickClose = (e) => {
       mainImg.classList.remove("closeImg");
     })
     conBtnBox.classList.remove("showBtnBox");
-    card.classList.remove("showCon");
-    btnName.classList.add("showName");
 
-    setTimeout(() => {
-      cards.forEach(card => {
-        card.classList.remove("fadeOut");
-      })
-      galleryBtn.style.display = "none";
-    }, 100)
+    if(cleanGallery()) {
+      card.classList.remove("showCon");
+      btnName.classList.add("showName");
+
+      setTimeout(() => {
+        cards.forEach(card => {
+          card.classList.remove("fadeOut");
+        })
+        galleryBtn.style.display = "none";
+      }, 300)
+    }
   }, 400)
 }
 
@@ -337,20 +360,6 @@ cards.forEach(card => {
   const cardClose = card.querySelector(".cardClose");
     cardBtn.addEventListener("click", (e) => {
       clickMore(e);
-      if(card.className.includes("bust")) {
-        imgLength = 25;
-        boothName = "bust";
-      } else if(card.className.includes("metal")) {
-        imgLength = 26;
-        boothName = "metal";
-      } else if(card.className.includes("profile")) {
-        imgLength = 25;
-        boothName = "full";
-      } else if(card.className.includes("dyna")) {
-        imgLength = 8;
-        boothName = "dyna";
-      }
-      loadGallery(imgLength, boothName);
     })
 
     conBtns.forEach(conBtn => {
@@ -384,6 +393,5 @@ cards.forEach(card => {
 
     cardClose.addEventListener("click", (e) => {
       clickClose(e);
-      cleanGallery();
     })
 })
