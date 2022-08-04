@@ -145,6 +145,7 @@ const clickMore = (e) => {
             setTimeout(() => {
               cardClose.classList.add("showClose");
               galleryBtn.classList.add("showBtn");
+              cleanGallery();
 
             }, 400)
           }, 200)
@@ -269,7 +270,6 @@ const cleanGallery = () => {
 }
 
 const loadGallery = (imgLength, boothName) => {
-  // cleanGallery();
   for (let i = 1; i <= imgLength; i++) {
     const imgBox = document.createElement("div");
     const img = document.createElement("img");
