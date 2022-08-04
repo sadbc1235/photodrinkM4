@@ -8,9 +8,9 @@ const conceptName = {
 
 const mainImgSrc = {
   bust: "/images/bust/bustmain1.png",
-  metal: "/images/metal/metal4.jpg",
-  full: "/images/full/fullshot5.jpg",
-  dynamic: "/images/dynamic/dynamic2.jpg"
+  metal: "/images/metal/metal4.png",
+  full: "/images/full/fullshot5.png",
+  dynamic: "/images/dynamic/dynamic2.png"
 }
 const bustConceptImgSrc = {
   neon: "/images/bust/concepts/neon/neon.png",
