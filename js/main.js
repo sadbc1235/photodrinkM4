@@ -48,7 +48,12 @@ const artFilter = [
   "background: url('/images/full/concepts/art/butterfly.png') no-repeat center; background-size: cover;",
   "background: url('/images/full/concepts/art/fullmoon.png') no-repeat center; background-size: cover;",
 ]
-const dynamicFilter = "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;"
+const dynamicFilter = [
+  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
+]
 
 const artBtnImg = [
   "background: url('/images/full/heart.png'); background-size: cover;", // heart
@@ -59,6 +64,8 @@ const artBtnImg = [
 const dynamicBtnImg = [
   "background: url('/images/dynamic/dynamicbtn.jpg'); background-size: cover;", // photo
   "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
+  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
+  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;" // video
 ]
 const modernFilter = [
   "rgba(136, 136, 136, .2)", // soft
@@ -74,16 +81,6 @@ const gallery = document.querySelector(".gallery");
 
 let imgLength = 0;
 let boothName = null;
-
-
-const initVideo = () => {
-  document.querySelector("video").pause();
-  document.querySelector("video").currentTime = 0;
-}
-
-const playVideo = () => {
-  document.querySelector("video").play();
-}
 
 const clickMore = (e) => {
   const card = e.path[3];
@@ -157,7 +154,6 @@ const clickMore = (e) => {
 }
 
 const clickConBtn = (e) => {
-  initVideo();
   const card = e.path[4];
   const conBtnBox = card.querySelector(".conBtnBox");
   const mainImg = card.querySelector(".mainImg");
@@ -233,8 +229,8 @@ const clickConBtn = (e) => {
       break;
       case "Dynamic":
         mainImg.setAttribute("src", boothSrc);
-        imgFilter[0].style = dynamicFilter;
         for(let i=0; i<conNames.length; i++) {
+          imgFilter[i].style = dynamicFilter[i];
           conCircle[i].style = dynamicBtnImg[i];
         }
       break;
@@ -282,7 +278,6 @@ const loadGallery = (imgLength, boothName) => {
 }
 
 const clickClose = (e) => {
-  initVideo();
   const card = e.path[3];
   const cardClose = card.querySelector(".cardClose");
   const btnName = card.querySelector(".btnName");
@@ -372,11 +367,7 @@ cards.forEach(card => {
 
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
-        const conName = cons[i].querySelector(".conName");
-
-        if(!conName.innerHTML.includes("Video")) {
-          initVideo();
-        }
+        
         filters.forEach(filter => {
           filter.classList.remove("showFilter");
         })
