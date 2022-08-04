@@ -261,7 +261,7 @@ const closeGallery = () => {
 }
 
 const loadGallery = (imgLength, boothName) => {
-  cleanGallery()
+  gallery.innerText = null;
   for (let i = 1; i <= imgLength; i++) {
     const imgBox = document.createElement("div");
     const img = document.createElement("img");
@@ -270,9 +270,6 @@ const loadGallery = (imgLength, boothName) => {
     imgBox.append(img);
     gallery.append(imgBox);
   }
-}
-const cleanGallery = () => {
-  gallery.innerText = null;
 }
 
 const clickClose = (e) => {
