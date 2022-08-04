@@ -49,10 +49,10 @@ const artFilter = [
   "background: url('/images/full/concepts/art/fullmoon.png') no-repeat center; background-size: cover;",
 ]
 const dynamicFilter = [
-  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
-  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
-  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
-  "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic1.jpg') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic2.png') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic3.png') no-repeat center; background-size: cover;",
+  "background: url('/images/dynamic/concept/dynamic4.png') no-repeat center; background-size: cover;",
 ]
 
 const artBtnImg = [
@@ -246,12 +246,10 @@ const clickConBtn = (e) => {
 
 const showGallery = () => {
 
-  return new Promise(() => {
     galleryBtn.classList.remove("showBtn");
     setTimeout(() => {
       galleryBox.classList.add("showGallery");
     }, 300)
-  })
   
 }
 const closeGallery = () => {
