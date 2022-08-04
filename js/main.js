@@ -46,7 +46,7 @@ const artFilter = [
   "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: cover;",
   "background: url('/images/full/concepts/art/nightsky.png') no-repeat center; background-size: cover;",
   "background: url('/images/full/concepts/art/butterfly.png') no-repeat center; background-size: cover;",
-  "background: url('/images/full/concepts/art/heart.png') no-repeat center; background-size: cover;",
+  "background: url('/images/full/concepts/art/fullmoon.png') no-repeat center; background-size: cover;",
 ]
 const dynamicFilter = "background: url('/images/dynamic/concept/dynamic.jpg') no-repeat center; background-size: cover;"
 
@@ -54,7 +54,7 @@ const artBtnImg = [
   "background: url('/images/full/heart.png'); background-size: cover;", // heart
   "background: url('/images/full/cloud.png'); background-size: cover;", // night sky
   "background: url('/images/full/butterfly.png'); background-size: cover;", // butterfly
-  "background: url('/images/full/heart.png'); background-size: cover;", // moon
+  "background: url('/images/full/fullmoon.png'); background-size: cover;", // moon
 ]
 const dynamicBtnImg = [
   "background: url('/images/dynamic/dynamicbtn.jpg'); background-size: cover;", // photo
@@ -68,7 +68,7 @@ const modernFilter = [
 ]
 const cards = document.querySelectorAll(".card");
 const galleryBox = document.querySelector(".galleryBox");
-const galleryBtn = galleryBox.querySelector(".galleryBtn");
+const galleryBtn = document.querySelector(".galleryBtn");
 const closeBtn = galleryBox.querySelector(".closeBtn");
 const gallery = document.querySelector(".gallery");
 
@@ -101,14 +101,14 @@ const clickMore = (e) => {
     imgLength = 26;
     boothName = "metal";
   } else if(card.className.includes("profile")) {
-    imgLength = 25;
+    imgLength = 26;
     boothName = "full";
   } else if(card.className.includes("dyna")) {
     imgLength = 8;
     boothName = "dyna";
   }
 
-  galleryBtn.style.display = "block";
+  galleryBtn.style.display = "flex";
 
   cards.forEach(card => {
     card.classList.add("fadeOut");
@@ -251,7 +251,7 @@ const clickConBtn = (e) => {
 const showGallery = () => {
 
   return new Promise(() => {
-    galleryBtn.classList.add("fadeOutBtn");
+    galleryBtn.classList.remove("showBtn");
     setTimeout(() => {
       galleryBox.classList.add("showGallery");
     }, 300)
@@ -261,7 +261,7 @@ const showGallery = () => {
 const closeGallery = () => {
   galleryBox.classList.remove("showGallery");
   setTimeout(() => {
-    galleryBtn.classList.remove("fadeOutBtn");
+    galleryBtn.classList.add("showBtn");
   }, 300)
 }
 
@@ -283,7 +283,7 @@ const loadGallery = (imgLength, boothName) => {
 
 const clickClose = (e) => {
   initVideo();
-  const card = e.path[2];
+  const card = e.path[3];
   const cardClose = card.querySelector(".cardClose");
   const btnName = card.querySelector(".btnName");
   const conBtnBox = card.querySelector(".conBtnBox");
