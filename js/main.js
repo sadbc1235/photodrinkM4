@@ -106,11 +106,11 @@ const clickMore = (e) => {
   } else if(card.className.includes("dyna")) {
     imgLength = 8;
     boothName = "dyna";
-  }
+  } // 사진 용량 줄여라 아아아아아아아 더줄여 최대한 줄여 갤러리 로딩 때문에 렉걸린다 씨이이이발 진짜 욕나온다.
 
   galleryBtn.style.display = "block";
   
-  // loadGallery(imgLength, boothName)
+  loadGallery(imgLength, boothName)
 
   cards.forEach(card => {
     card.classList.add("fadeOut");
