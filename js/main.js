@@ -248,10 +248,14 @@ const clickConBtn = (e) => {
 }
 
 const showGallery = () => {
-  galleryBtn.classList.add("fadeOutBtn");
-  setTimeout(() => {
-    galleryBox.classList.add("showGallery");
-  }, 300)
+
+  return new Promise(() => {
+    galleryBtn.classList.add("fadeOutBtn");
+    setTimeout(() => {
+      galleryBox.classList.add("showGallery");
+    }, 300)
+  })
+  
 }
 const closeGallery = () => {
   galleryBox.classList.remove("showGallery");
@@ -260,8 +264,12 @@ const closeGallery = () => {
   }, 300)
 }
 
+const cleanGallery = () => {
+    gallery.innerText = "";
+}
+
 const loadGallery = (imgLength, boothName) => {
-  gallery.innerText = null;
+  // cleanGallery();
   for (let i = 1; i <= imgLength; i++) {
     const imgBox = document.createElement("div");
     const img = document.createElement("img");
@@ -270,6 +278,7 @@ const loadGallery = (imgLength, boothName) => {
     imgBox.append(img);
     gallery.append(imgBox);
   }
+  
 }
 
 const clickClose = (e) => {
@@ -331,8 +340,9 @@ const clickClose = (e) => {
 }
 
 galleryBtn.addEventListener("click", () => {
-  loadGallery(imgLength, boothName)
-  showGallery();
+  
+  showGallery()
+  loadGallery(imgLength, boothName);
 })
 
 closeBtn.addEventListener("click", () => {
