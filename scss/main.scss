@@ -284,15 +284,26 @@ header {
               opacity: 1;
             }
 
-            figure {
-              width: 100%;
-              height: 100%;
+            .visualizer {
+              width: 170px;
+              height: 170px;
+              border: 1px solid #fff;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -80%);
+              z-index: 88;
+              background-color: #0202024d;
 
-              video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transform: rotate(-90deg);
+              .visualizer-container__bar {
+                background: white;
+                margin: 0 2px;
+                width: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 4px;
+                z-index: 99;
               }
             }
           }// imgFilter

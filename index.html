@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/css/main.css">
 
   <script src="/js/main.js" defer></script>
+  <script src="/js/audio.js" defer></script>
 
 </head>
 <body>
@@ -53,10 +54,14 @@
                   <li>K</li>
                 </ul>
               </div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
+              <div class="imgFilter">
+              </div>
+              <div class="imgFilter">
+              </div>
+              <div class="imgFilter">
+              </div>
+              <div class="imgFilter">
+              </div>
               <img class="mainImg" src="/images/bust/bustmain1.png" alt="">
             </div>
 
@@ -269,11 +274,21 @@
                   <li>K</li>
                 </ul>
               </div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
-              <div class="imgFilter"></div>
+              <div class="imgFilter">
+                <div class="visualizer"></div>
+              </div>
+              <div class="imgFilter">
+                <div class="visualizer"></div>
+              </div>
+              <div class="imgFilter">
+                <div class="visualizer"></div>
+              </div>
+              <div class="imgFilter">
+                <div class="visualizer"></div>
+              </div>
               <img class="mainImg" src="/images/dynamic/dynamic2.png" alt="">
+              <input type="button" class="startBtn" value="play" style="position: absolute; left: 0; bottom: 0; z-index: 99;">
+              <input type="button" class="stopBtn" value="play" style="position: absolute; left: 40px; bottom: 0; z-index: 99;">
             </div>
 
             <div class="cardBtn ts">
@@ -337,6 +352,11 @@
 
     </div>
   </section>
+
+  <audio src="/audio/backnforth.mp3" loop style="display: none;"></audio>
+  <audio src="/audio/music.mp3" loop style="display: none;"></audio>
+  <audio src="/audio/music.mp3" loop style="display: none;"></audio>
+  <audio src="/audio/music.mp3" loop style="display: none;"></audio>
 
 </body>
 </html>
