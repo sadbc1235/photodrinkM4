@@ -276,7 +276,7 @@ const loadGallery = (imgLength, boothName) => {
 }
 
 const clickClose = (e) => {
-  const card = e.path[3];
+  const card = e.path[2];
   const cardClose = card.querySelector(".cardClose");
   const btnName = card.querySelector(".btnName");
   const conBtnBox = card.querySelector(".conBtnBox");
