@@ -371,6 +371,7 @@ cards.forEach(card => {
         if(cons[i].className.includes("m")) {
           const audio = document.querySelectorAll("audio");
           audio.forEach(music => {
+            music.currentTime = 0;
             music.pause();
           })
           audio[i].play();

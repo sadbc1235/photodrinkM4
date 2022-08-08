@@ -13,7 +13,7 @@ function preparedMusic() { //this will be executed when the page is ready
     var elem = document.createElement('audio'); //we create an audio element
     elem.src = audioFiles[x]; //we append the specific source to it.
     // elem.setAttribute('controls', '');
-    elem.setAttribute('loop', '');
+    // elem.setAttribute('loop', '');
     document.body.appendChild(elem); //now we add that element to the body
     sources[x] = context.createMediaElementSource(elem); //we create a mediasource for it
     sources[x].connect(analyser); //we connect that to the analyser
