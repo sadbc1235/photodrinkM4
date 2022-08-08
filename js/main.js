@@ -288,6 +288,14 @@ const clickClose = (e) => {
   const cons = conBox.querySelectorAll(".con");
   const imgFilter = card.querySelectorAll(".imgFilter");
 
+  if(card.className.includes("dyna")) {
+    const audio = document.querySelectorAll("audio");
+    audio.forEach(music => {
+      music.currentTime = 0;
+      music.pause();
+    })
+  }
+
   for(let i=0; i<imgFilter.length; i++) {
     imgFilter[i].classList.remove("showFilter");
     cons[i].classList.remove("active");
