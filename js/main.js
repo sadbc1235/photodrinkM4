@@ -78,6 +78,7 @@ const galleryBox = document.querySelector(".galleryBox");
 const galleryBtn = document.querySelector(".galleryBtn");
 const closeBtn = galleryBox.querySelector(".closeBtn");
 const gallery = document.querySelector(".gallery");
+const visBox = document.querySelector(".visBox");
 
 let imgLength = 0;
 let boothName = null;
@@ -300,6 +301,7 @@ const clickClose = (e) => {
   galleryBtn.classList.remove("showBtn");
   cardExplain.classList.remove("showEx");
   mainImg.classList.add("closeImg");
+  visBox.classList.remove("showVis");
 
   setTimeout(() => {
     let boothSrc;
@@ -366,6 +368,14 @@ cards.forEach(card => {
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
         
+        if(cons[i].className.includes("m")) {
+          const audio = document.querySelectorAll("audio");
+          audio.forEach(music => {
+            music.pause();
+          })
+          audio[i].play();
+        }
+
         filters.forEach(filter => {
           filter.classList.remove("showFilter");
         })
@@ -374,6 +384,15 @@ cards.forEach(card => {
         }
         cons[i].classList.add("active");
         filters[i].classList.add("showFilter");
+        if(cons[i].className.includes("m")) {
+          const audio = document.querySelectorAll("audio");
+          setTimeout(() => {
+            visBox.classList.add("showVis");
+            setTimeout(() => {
+              audio[i].play();
+            }, 400)
+          }, 700);
+        }
       })
     }
 

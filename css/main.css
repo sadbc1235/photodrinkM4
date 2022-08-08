@@ -261,27 +261,6 @@ header h1 {
 .content > .inner .cardBox .card .cardImg .imgFilter.showFilter {
   opacity: 1;
 }
-.content > .inner .cardBox .card .cardImg .imgFilter .visualizer {
-  width: 170px;
-  height: 170px;
-  border: 1px solid #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -80%);
-  z-index: 88;
-  background-color: rgba(2, 2, 2, 0.3019607843);
-}
-.content > .inner .cardBox .card .cardImg .imgFilter .visualizer .visualizer-container__bar {
-  background: white;
-  margin: 0 2px;
-  width: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 4px;
-  z-index: 99;
-}
 .content > .inner .cardBox .card .cardImg .mainImg {
   width: 100%;
   height: 100%;
@@ -291,6 +270,37 @@ header h1 {
 }
 .content > .inner .cardBox .card .cardImg .mainImg.closeImg {
   opacity: 0;
+}
+.content > .inner .cardBox .card .cardImg .visBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 2, 2, 0.3019607843);
+  opacity: 0;
+}
+.content > .inner .cardBox .card .cardImg .visBox.showVis {
+  opacity: 1;
+  z-index: 99;
+}
+.content > .inner .cardBox .card .cardImg .visBox .visualizer {
+  width: 170px;
+  height: 170px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-54%, -80%);
+}
+.content > .inner .cardBox .card .cardImg .visBox .visualizer .visualizer-container__bar {
+  background: white;
+  margin: 0 2px;
+  width: 9px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 4px;
+  transition: 0.2s linear;
 }
 .content > .inner .cardBox .card .cardBtn {
   position: absolute;
