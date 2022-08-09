@@ -399,7 +399,6 @@ cards.forEach(card => {
     let disable = true;
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
-        console.log( "hi")
         clearInterval();
         if(disable) {
           disable = false;
