@@ -70,7 +70,7 @@ function preparedMusic() { //this will be executed when the page is ready
   // At the next animation frame, call ourselves
   setTimeout(() => {
     renderFrame();
-  }, 10)
+  }, 5)
   // window.requestAnimationFrame(renderFrame);
 
   }
