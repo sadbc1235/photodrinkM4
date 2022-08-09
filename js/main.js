@@ -251,6 +251,16 @@ const clickConBtn = (e) => {
 }
 
 const showGallery = () => {
+  cards.forEach(card => {
+    if(card.className.includes("dyna") && card.className.includes("showCon")) {
+      const audio = document.querySelectorAll("audio");
+      audio.forEach(music => {
+        music.currentTime = 0;
+        music.pause();
+      })
+    }
+  })
+  
 
     galleryBtn.classList.remove("showBtn");
     setTimeout(() => {
@@ -389,6 +399,8 @@ cards.forEach(card => {
     let disable = true;
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
+        console.log( "hi")
+        clearInterval();
         if(disable) {
           disable = false;
           if(cons[i].className.includes("m")) {

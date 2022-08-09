@@ -68,7 +68,10 @@ function preparedMusic() { //this will be executed when the page is ready
   }
 
   // At the next animation frame, call ourselves
-  window.requestAnimationFrame(renderFrame);
+  setTimeout(() => {
+    renderFrame();
+  }, 10)
+  // window.requestAnimationFrame(renderFrame);
 
   }
 
