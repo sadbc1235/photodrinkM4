@@ -63,9 +63,9 @@ const artBtnImg = [
 ]
 const dynamicBtnImg = [
   "background: url('/images/dynamic/dynamicbtn.jpg'); background-size: cover;", // photo
-  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
-  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;", // video
-  "background: url('/images/dynamic/dynamicbtn2.jpg'); background-size: cover;" // video
+  "background: url('/images/dynamic/dynamicbtn2.png'); background-size: cover;", // video
+  "background: url('/images/dynamic/dynamicbtn3.png'); background-size: cover;", // video
+  "background: url('/images/dynamic/dynamicbtn4.png'); background-size: cover;" // video
 ]
 const modernFilter = [
   "rgba(136, 136, 136, .2)", // soft

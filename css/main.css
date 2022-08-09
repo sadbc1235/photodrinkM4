@@ -295,6 +295,8 @@ header h1 {
 }
 .content > .inner .cardBox .card .cardImg .visBox .visualizer .visualizer-container__bar {
   background: white;
+  box-shadow: 0px 0px 5px #fd0011, inset 0px 0px 5px #c92933;
+  border-radius: 3px;
   margin: 0 2px;
   width: 9px;
   position: absolute;
