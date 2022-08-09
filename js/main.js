@@ -417,8 +417,9 @@ cards.forEach(card => {
                 disable = true;
               }, 500)
             }, 700);
+          } else {
+            disable = true;
           }
-          disable = true;
         }
         
       })

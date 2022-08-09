@@ -7,13 +7,20 @@ function preparedMusic() { //this will be executed when the page is ready
   // analyser.connect(context.destination);
   
   //now we take all the files and create a button for every file
-  
+  const audios = document.querySelectorAll("audio");
+  const visualizerContainer__bars = document.querySelectorAll(".visualizer-container__bar");
+  audios.forEach( audio => {
+    audio.remove();
+  })
+  visualizerContainer__bars.forEach( visualizerContainer__bars => {
+    visualizerContainer__bars.remove();
+  })
   sources = []; //we create an array where we store all the created sources in.
   for (let x in audioFiles) {
     let elem = document.createElement('audio'); //we create an audio element
     elem.src = audioFiles[x]; //we append the specific source to it.
     // elem.setAttribute('controls', '');
-    // elem.setAttribute('loop', '');
+    elem.setAttribute('loop', '');
     document.body.appendChild(elem); //now we add that element to the body
     sources[x] = context.createMediaElementSource(elem); //we create a mediasource for it
     sources[x].connect(analyser); //we connect that to the analyser
