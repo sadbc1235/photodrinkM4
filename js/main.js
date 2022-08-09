@@ -111,7 +111,12 @@ const clickMore = (e) => {
   cards.forEach(card => {
     card.classList.add("fadeOut");
   })
-
+  setTimeout(() => {
+    cards.forEach(card => {
+      card.style.display = "none";
+    })
+    card.style.display = "block";
+  }, 500)
   card.classList.remove("fadeOut");
   setTimeout(() => {
     card.classList.add("showCon");
@@ -290,11 +295,19 @@ const clickClose = (e) => {
 
   if(card.className.includes("dyna")) {
     const audio = document.querySelectorAll("audio");
+    const visualizerContainer__bars = document.querySelectorAll(".visualizer-container__bar");
     audio.forEach(music => {
       music.currentTime = 0;
       music.pause();
+      music.remove();
+    })
+    visualizerContainer__bars.forEach( visualizerContainer__bars => {
+      visualizerContainer__bars.remove();
     })
   }
+  cards.forEach(card => {
+    card.style.display = "block";
+  })
 
   for(let i=0; i<imgFilter.length; i++) {
     imgFilter[i].classList.remove("showFilter");
@@ -373,35 +386,41 @@ cards.forEach(card => {
       })
     })
 
+    let disable = true;
     for(let i=0; i<cons.length; i++) {
       cons[i].addEventListener("click", () => {
-        
-        if(cons[i].className.includes("m")) {
-          const audio = document.querySelectorAll("audio");
-          audio.forEach(music => {
-            music.currentTime = 0;
-            music.pause();
+        if(disable) {
+          disable = false;
+          if(cons[i].className.includes("m")) {
+            const audio = document.querySelectorAll("audio");
+            audio.forEach(music => {
+              music.currentTime = 0;
+              music.pause();
+            })
+            audio[i].play();
+          }
+  
+          filters.forEach(filter => {
+            filter.classList.remove("showFilter");
           })
-          audio[i].play();
-        }
-
-        filters.forEach(filter => {
-          filter.classList.remove("showFilter");
-        })
-        for(let i=0; i<cons.length; i++) {
-          cons[i].classList.remove("active");
-        }
-        cons[i].classList.add("active");
-        filters[i].classList.add("showFilter");
-        if(cons[i].className.includes("m")) {
-          const audio = document.querySelectorAll("audio");
-          setTimeout(() => {
-            visBox.classList.add("showVis");
+          for(let i=0; i<cons.length; i++) {
+            cons[i].classList.remove("active");
+          }
+          cons[i].classList.add("active");
+          filters[i].classList.add("showFilter");
+          if(cons[i].className.includes("m")) {
+            const audio = document.querySelectorAll("audio");
             setTimeout(() => {
-              audio[i].play();
-            }, 400)
-          }, 700);
+              visBox.classList.add("showVis");
+              setTimeout(() => {
+                audio[i].play();
+                disable = true;
+              }, 500)
+            }, 700);
+          }
+          disable = true;
         }
+        
       })
     }
 

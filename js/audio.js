@@ -9,8 +9,8 @@ function preparedMusic() { //this will be executed when the page is ready
   //now we take all the files and create a button for every file
   
   sources = []; //we create an array where we store all the created sources in.
-  for (var x in audioFiles) {
-    var elem = document.createElement('audio'); //we create an audio element
+  for (let x in audioFiles) {
+    let elem = document.createElement('audio'); //we create an audio element
     elem.src = audioFiles[x]; //we append the specific source to it.
     // elem.setAttribute('controls', '');
     // elem.setAttribute('loop', '');

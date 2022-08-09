@@ -279,10 +279,14 @@ header h1 {
   height: 100%;
   background-color: rgba(2, 2, 2, 0.3019607843);
   opacity: 0;
+  z-index: 0;
 }
 .content > .inner .cardBox .card .cardImg .visBox.showVis {
   opacity: 1;
   z-index: 99;
+}
+.content > .inner .cardBox .card .cardImg .visBox.showVis .visualizer-container__bar {
+  opacity: 1;
 }
 .content > .inner .cardBox .card .cardImg .visBox .visualizer {
   width: 170px;
@@ -300,7 +304,7 @@ header h1 {
   top: 50%;
   left: 50%;
   height: 4px;
-  transition: 0.2s linear;
+  opacity: 0;
 }
 .content > .inner .cardBox .card .cardBtn {
   position: absolute;
